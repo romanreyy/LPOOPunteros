@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+// Función para encontrar la suma y el promedio de los elementos de un arreglo
+void sumaYPromedio(int *arreglo, int longitud, int *suma, float *promedio) {
+    *suma = 0;
+    *promedio = 0.0;
+    // Calcular la suma de los elementos
+    for (int i = 0; i < longitud; i++) {
+        *suma += *(arreglo + i); // Equivalente a arreglo[i]
+    }
+    // Calcular el promedio
+    *promedio = (float)(*suma) / longitud;
+}
+int main() {
+    int longitud;
+
+    // Pedir al usuario que ingrese la longitud del arreglo
+    printf("Ingrese la longitud del arreglo: ");
+    scanf("%d", &longitud);
+    // Reservar memoria dinámica para el arreglo
+    int *arreglo = (int *)malloc(longitud * sizeof(int));
+    // Pedir al usuario que ingrese los elementos del arreglo
+    printf("Ingrese los elementos del arreglo:\n");
+    for (int i = 0; i < longitud; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &arreglo[i]);
+    }
+    int suma;
+    float promedio;
+    // Llamar a la función para encontrar la suma y el promedio
+    sumaYPromedio(arreglo, longitud, &suma, &promedio);
+    // Imprimir los resultados
+    printf("Arreglo ingresado: ");
+    for (int i = 0; i < longitud; i++) {
+        printf("%d ", arreglo[i]);
+    }
+    printf("\n");
+    printf("Suma de los elementos: %d\n", suma);
+    printf("Promedio de los elementos: %.2f\n", promedio);
+
+    // Liberar la memoria asignada al arreglo
+    free(arreglo);
+
+    return 0;
+}
