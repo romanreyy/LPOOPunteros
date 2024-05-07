@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+// prototipo de la funcion 
+void intercambiar(int *ptr1, int *ptr2);
+
+int main() {
+    int a, b;
+	
+	//Ingresar valores
+    printf("Ingrese el primer valor:\n");
+    scanf("%d", &a);
+    printf("Ingrese el segundo valor: \n");
+    scanf("%d", &b);
+
+    // Llamar a la función para intercambiar los valores
+    intercambiar(&a, &b);
+
+    printf("\nValores finales después del intercambio:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    return 0;
+}
+
+// Función para intercambiar el valor de dos variables enteras
+void intercambiar(int *ptr1, int *ptr2) {
+    int temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
