@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Función para copiar un arreglo en otro arreglo
+void copiarArreglo(int *origen, int *destino, int longitud) {
+    for (int i = 0; i < longitud; i++) {
+        *(destino + i) = *(origen + i);
+    }
+}
+
+int main() {
+    int longitud;
+
+    // Pedir al usuario que ingrese la longitud del arreglo
+    printf("Ingrese la longitud del arreglo: ");
+    scanf("%d", &longitud);
+
+    // Reservar memoria dinámica para los arreglos
+    int *arreglo_origen = (int *)malloc(longitud * sizeof(int));
+    int *arreglo_destino = (int *)malloc(longitud * sizeof(int));
+
+    // Pedir al usuario que ingrese los elementos del arreglo origen
+    printf("Ingrese los elementos del arreglo origen:\n");
+    for (int i = 0; i < longitud; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &arreglo_origen[i]);
+    }
+
+    // Llamar a la función para copiar el arreglo origen al arreglo destino
+    copiarArreglo(arreglo_origen, arreglo_destino, longitud);
+
+    // Imprimir el arreglo destino (copia del arreglo origen)
+    printf("\nArreglo destino (copia del arreglo origen):\n");
+    for (int i = 0; i < longitud; i++) {
+        printf("%d ", arreglo_destino[i]);
+    }
+    printf("\n");
+
+    // Liberar la memoria asignada para los arreglos
+    free(arreglo_origen);
+    free(arreglo_destino);
+
+    return 0;
+}
