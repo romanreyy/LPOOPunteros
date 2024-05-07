@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Función para concatenar dos cadenas
+char* concatenarCadenas(const char* cadena1, const char* cadena2) {
+    // Obtener la longitud de ambas cadenas
+    int longitud1 = strlen(cadena1);
+    int longitud2 = strlen(cadena2);
+
+    // Calcular la longitud total de la cadena concatenada
+    int longitudTotal = longitud1 + longitud2 + 1; // +1 para el carácter nulo '\0'
+
+    // Reservar memoria dinámica para la cadena concatenada
+    char* cadenaConcatenada = (char*)malloc(longitudTotal * sizeof(char));
+
+    // Verificar si la asignación de memoria fue exitosa
+    if (cadenaConcatenada == NULL) {
+        printf("Error: No se pudo asignar memoria para la cadena concatenada.\n");
+        exit(1);
+    }
+
+    // Copiar la primera cadena a la cadena concatenada
+    strcpy(cadenaConcatenada, cadena1);
+
+    // Concatenar la segunda cadena a la cadena concatenada
+    strcat(cadenaConcatenada, cadena2);
+
+    return cadenaConcatenada;
+}
+
+int main() {
+    char cadena1[100], cadena2[100];
+
+    // Pedir al usuario que ingrese la primera cadena
+    printf("Ingrese la primera cadena: ");
+    scanf("%s", cadena1);
+
+    // Pedir al usuario que ingrese la segunda cadena
+    printf("Ingrese la segunda cadena: ");
+    scanf("%s", cadena2);
+
+    // Llamar a la función para concatenar las cadenas
+    char* cadenaConcatenada = concatenarCadenas(cadena1, cadena2);
+
+    // Imprimir la cadena concatenada
+    printf("Cadena concatenada: %s\n", cadenaConcatenada);
+
+    // Liberar la memoria asignada para la cadena concatenada
+    free(cadenaConcatenada);
+
+    return 0;
+}
