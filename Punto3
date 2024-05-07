@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Función para encontrar el mayor y el menor elemento de un arreglo
+void encontrarMayorYMenor(int *arreglo, int longitud, int *mayor, int *menor) {
+    *mayor = *arreglo; // Inicializar mayor con el primer elemento del arreglo
+    *menor = *arreglo; // Inicializar menor con el primer elemento del arreglo
+
+    // Recorrer el arreglo para encontrar el mayor y el menor elemento
+    for (int i = 1; i < longitud; i++) {
+        if (*(arreglo + i) > *mayor) {
+            *mayor = *(arreglo + i);
+        }
+        if (*(arreglo + i) < *menor) {
+            *menor = *(arreglo + i);
+        }
+    }
+}
+
+int main() {
+    int longitud;
+
+    // Pedir al usuario que ingrese la longitud del arreglo
+    printf("Ingrese la longitud del arreglo: ");
+    scanf("%d", &longitud);
+
+    // Reservar memoria dinámica para el arreglo
+    int *arreglo = (int *)malloc(longitud * sizeof(int));
+
+    // Pedir al usuario que ingrese los elementos del arreglo
+    printf("Ingrese los elementos del arreglo:\n");
+    for (int i = 0; i < longitud; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &arreglo[i]);
+    }
+
+    int mayor, menor;
+
+    // Llamar a la función para encontrar el mayor y el menor elemento
+    encontrarMayorYMenor(arreglo, longitud, &mayor, &menor);
+
+    // Imprimir los resultados
+    printf("Arreglo ingresado: ");
+    for (int i = 0; i < longitud; i++) {
+        printf("%d ", arreglo[i]);
+    }
+    printf("\n");
+    printf("El mayor elemento del arreglo es: %d\n", mayor);
+    printf("El menor elemento del arreglo es: %d\n", menor);
+
+    // Liberar la memoria asignada al arreglo
+    free(arreglo);
+
+    return 0;
+}
