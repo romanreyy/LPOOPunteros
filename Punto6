@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+// Función para contar las ocurrencias de un elemento en un arreglo
+int contar_ocurrencias(int *arr, int size, int elemento) {
+    int contador = 0;
+    // Recorremos el arreglo usando punteros
+    for (int *ptr = arr; ptr < arr + size; ptr++) {
+        if (*ptr == elemento) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+int main() {
+    int arreglo[] = {1, 2, 3, 4, 2, 5, 2, 6, 7, 2}; // Arreglo de ejemplo
+    int elemento_a_contar = 2; // Elemento que queremos contar
+
+    int size = sizeof(arreglo) / sizeof(arreglo[0]); // Calculamos el tamaño del arreglo
+
+    // Llamamos a la función para contar las ocurrencias
+    int ocurrencias = contar_ocurrencias(arreglo, size, elemento_a_contar);
+
+    // Mostramos el resultado
+    printf("El elemento %d aparece %d veces en el arreglo.\n", elemento_a_contar, ocurrencias);
+
+    return 0;
+}
